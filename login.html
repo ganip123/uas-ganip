@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Login</title>
+
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+    }
+    
+    .container {
+        width: 300px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    label {
+        margin-bottom: 10px;
+    }
+    input {
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+    }
+    
+    button {
+        padding: 10px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        background-color: #3e8e41;
+    }
+    
+    #pesan-error {
+        color: red;
+        font-size: 12px;
+    }
+    
+    </style>
+    <body>
+        <div class="container">
+            <form id="form-login">
+                <h2>Login</h2>
+                <label for="username">Username:</label>
+                <input type="text" id="username" required>
+    
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+    
+                <button id="btn-login">Login</button>
+    
+                <p id="pesan-error"></p>
+            </form>
+        </div>
+    </body>
+
+<script>
+const pengguna = [
+    { username: "admin", password: "123" },
+    { username: "user", password: "password" }
+];
+
+function cekLogin() {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const pesanError = document.getElementById("pesan-error");
+
+    pengguna.forEach((user) => {
+        if (username === user.username && password === user.password) {
+            window.location.href = "index.html";
+            alert("Login berhasil!");
+            return;
+        }
+    });
+
+    pesanError.innerHTML = "Username atau password salah!";
+}
+
+document.getElementById("btn-login").addEventListener("click", (e) => {
+    e.preventDefault();
+    cekLogin();
+});
+
+</script>
+
+</html>
